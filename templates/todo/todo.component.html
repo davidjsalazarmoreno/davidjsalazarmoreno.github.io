@@ -6,7 +6,7 @@
     <div class="list-group TodoList">
 
       <li class="list-group-item {{t.status}}" *ngFor="#t of
-       todos | todoListPipe:filterStatus" id="{{t.id}}" (click)="toggleStatus(t)">
+       todos | todoListFilterPipe:filterStatus" id="{{t.id}}" (click)="toggleStatus(t)">
 
         <input [checked]="t.status == 'completed'" type="checkbox" class="pull-left">
         {{t.content}}

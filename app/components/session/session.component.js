@@ -51,7 +51,6 @@ System.register(["angular2/core", "angular2/router", "angular2/common", "../../s
                 };
                 SessionComponent.prototype.onSubmit = function () {
                     var _this = this;
-                    console.log(arguments);
                     var _users = this._userService.getUsers(), _getUserBy = this._userService.getUserBy, _user = this.user;
                     _users.then(function (result) {
                         var currentUser = _getUserBy(result, "email", _user.email);

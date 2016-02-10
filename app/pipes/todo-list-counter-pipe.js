@@ -11,37 +11,30 @@ System.register(["angular2/core"], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var TodoListFilterPipe;
+    var TodoListCounterPipe;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            TodoListFilterPipe = (function () {
-                function TodoListFilterPipe() {
+            TodoListCounterPipe = (function () {
+                function TodoListCounterPipe() {
                 }
-                TodoListFilterPipe.prototype.transform = function (value, filterStatus) {
-                    var _filterStatus = filterStatus[0] || "all";
-                    if (_filterStatus == "all") {
-                        return value;
-                    }
-                    console.log(_filterStatus);
-                    return value.filter(function (item) {
-                        console.log(item.status);
-                        return item.status == _filterStatus && item;
-                    });
+                TodoListCounterPipe.prototype.transform = function (value) {
+                    var _length = value.length || 0;
+                    return _length + " items left";
                 };
-                TodoListFilterPipe = __decorate([
+                TodoListCounterPipe = __decorate([
                     core_1.Pipe({
-                        name: "todoListFilterPipe",
+                        name: "todoListCounterPipe"
                     }), 
                     __metadata('design:paramtypes', [])
-                ], TodoListFilterPipe);
-                return TodoListFilterPipe;
+                ], TodoListCounterPipe);
+                return TodoListCounterPipe;
             }());
-            exports_1("TodoListFilterPipe", TodoListFilterPipe);
+            exports_1("TodoListCounterPipe", TodoListCounterPipe);
         }
     }
 });
-//# sourceMappingURL=todo-list-pipe.js.map
+//# sourceMappingURL=todo-list-counter-pipe.js.map

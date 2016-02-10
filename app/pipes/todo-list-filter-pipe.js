@@ -44,4 +44,4 @@ System.register(["angular2/core"], function(exports_1, context_1) {
         }
     }
 });
-//# sourceMappingURL=todo-list-pipe.js.map
+//# sourceMappingURL=todo-list-filter-pipe.js.map

@@ -66,7 +66,6 @@ System.register(["angular2/core", "../models/mock.user"], function(exports_1, co
                 };
                 UserService.prototype.addUser = function (newUser) {
                     var _dbName = this._dbName, _db = this._db, _USERS = this.users, oldUsers = _db.getItem(_dbName);
-                    console.log("here");
                     if (_db) {
                         if (oldUsers !== null) {
                             _USERS = JSON.parse(oldUsers);
@@ -75,6 +74,7 @@ System.register(["angular2/core", "../models/mock.user"], function(exports_1, co
                         else {
                             _USERS.push(newUser);
                         }
+                        console.log(_USERS);
                         _db.setItem(_dbName, JSON.stringify(_USERS));
                         return true;
                     }

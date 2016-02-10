@@ -20,11 +20,10 @@ System.register(["angular2/core"], function(exports_1, context_1) {
         execute: function() {
             SessionService = (function () {
                 function SessionService() {
-                    this._dbName = "users";
                     this._db = window.sessionStorage.getItem && window.sessionStorage;
                 }
                 SessionService.prototype.getSession = function (key) {
-                    var _dbName = this._dbName, _db = this._db, _currentSession;
+                    var _db = this._db, _currentSession;
                     if (_db) {
                         _currentSession = _db.getItem(key);
                         if (_currentSession !== null) {
@@ -37,7 +36,7 @@ System.register(["angular2/core"], function(exports_1, context_1) {
                     return false;
                 };
                 SessionService.prototype.addSession = function (key, userId) {
-                    var _dbName = this._dbName, _db = this._db;
+                    var _db = this._db;
                     if (_db) {
                         _db.setItem(key, userId);
                         return true;
@@ -45,10 +44,10 @@ System.register(["angular2/core"], function(exports_1, context_1) {
                     return false;
                 };
                 SessionService.prototype.removeSession = function (key) {
-                    var _dbName = this._dbName, _db = this._db, _oldSession = null;
-                    _db.removeItem(key);
-                    _oldSession = _db.getItem(_dbName);
+                    var _db = this._db, _oldSession = null;
                     if (_db) {
+                        _db.removeItem(key);
+                        _oldSession = _db.getItem(key);
                         if (_oldSession === null) {
                             return true;
                         }

@@ -1,4 +1,4 @@
-System.register(["angular2/core", "../../services/id-generator.service", "../../services/user.service", "./todo-new.component", "./todo-list.component", "./todo-filter.component", "../../pipes/todo-list-pipe"], function(exports_1, context_1) {
+System.register(["angular2/core", "../../services/id-generator.service", "../../services/user.service", "./todo-new.component", "./todo-list.component", "./todo-filter.component", "../../pipes/todo-list-filter-pipe", "../../pipes/todo-list-counter-pipe"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["angular2/core", "../../services/id-generator.service", "../../
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, id_generator_service_1, user_service_1, todo_new_component_1, todo_list_component_1, todo_filter_component_1, todo_list_pipe_1;
+    var core_1, id_generator_service_1, user_service_1, todo_new_component_1, todo_list_component_1, todo_filter_component_1, todo_list_filter_pipe_1, todo_list_counter_pipe_1;
     var TodoComponent;
     return {
         setters:[
@@ -32,8 +32,11 @@ System.register(["angular2/core", "../../services/id-generator.service", "../../
             function (todo_filter_component_1_1) {
                 todo_filter_component_1 = todo_filter_component_1_1;
             },
-            function (todo_list_pipe_1_1) {
-                todo_list_pipe_1 = todo_list_pipe_1_1;
+            function (todo_list_filter_pipe_1_1) {
+                todo_list_filter_pipe_1 = todo_list_filter_pipe_1_1;
+            },
+            function (todo_list_counter_pipe_1_1) {
+                todo_list_counter_pipe_1 = todo_list_counter_pipe_1_1;
             }],
         execute: function() {
             TodoComponent = (function () {
@@ -57,6 +60,7 @@ System.register(["angular2/core", "../../services/id-generator.service", "../../
                          * Emitiendo evento para guardar la lista de TODOS en la "base de datos"
                          */
                         this.saveTodos.emit();
+                        this.newTodo = "";
                         console.log(this.todos);
                         console.log(this);
                     }
@@ -98,7 +102,7 @@ System.register(["angular2/core", "../../services/id-generator.service", "../../
                     core_1.Component({
                         selector: "todo",
                         templateUrl: "/templates/todo/todo.component.html",
-                        pipes: [todo_list_pipe_1.TodoListPipe],
+                        pipes: [todo_list_filter_pipe_1.TodoListFilterPipe, todo_list_counter_pipe_1.TodoListCounterPipe],
                         directives: [
                             todo_new_component_1.TodoNewComponent,
                             todo_list_component_1.TodoListComponent,
