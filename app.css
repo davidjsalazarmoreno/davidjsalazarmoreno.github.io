@@ -6790,6 +6790,13 @@ h1, h2 {
   text-indent: 5px;
 }
 
+.TodoList li:hover,
+.TodoList li:active,
+.TodoList input:hover,
+.TodoList input:active {
+  cursor: pointer;
+}
+
 .TodoList button {
   visibility:  hidden;
   opacity: 0.5;

@@ -48,21 +48,39 @@ System.register(["angular2/core", "../../services/id-generator.service", "../../
                     this.saveTodos = new core_1.EventEmitter();
                 }
                 TodoComponent.prototype.addTodo = function () {
-                    var newID = this._idGeneratorService.newID, defaultStatus = this.defaultStatus;
+                    var newID = this._idGeneratorService.newID, 
+                    /**
+                     * Estatus por defecto para las todos
+                     * @type {string}
+                     */
+                    defaultStatus = this.defaultStatus;
+                    /**
+                     * Comprobando que el input no esté vacio
+                     */
                     if (this.newTodo && this.newTodo.length > 0) {
                         var newTodo = {
                             id: newID(),
                             content: this.newTodo,
                             status: defaultStatus
                         };
+                        /**
+                         * Agregando la nueva tarea al modelo todos
+                         */
                         this.todos.push(newTodo);
                         /**
                          * Emitiendo evento para guardar la lista de TODOS en la "base de datos"
                          */
                         this.saveTodos.emit();
+                        /**
+                         * Reseteando el modelo del input
+                         * @type {String}
+                         */
                         this.newTodo = "";
-                        console.log(this.todos);
-                        console.log(this);
+                        /**
+                         * Modificando el filtro para que se muestren todas las tareas
+                         * @type {String}
+                         */
+                        this.filterStatus = "active";
                     }
                 };
                 TodoComponent.prototype.removeTodo = function (todo) {
@@ -76,6 +94,7 @@ System.register(["angular2/core", "../../services/id-generator.service", "../../
                     });
                 };
                 TodoComponent.prototype.toggleStatus = function (todo) {
+                    var _filterStatusBackup = this.filterStatus + "";
                     if (todo.status == "active") {
                         todo.status = "completed";
                     }
