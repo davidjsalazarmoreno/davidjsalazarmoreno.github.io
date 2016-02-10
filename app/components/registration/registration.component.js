@@ -42,12 +42,13 @@ System.register(["angular2/core", "angular2/router", "angular2/common", "../../s
                     this.active = true;
                 }
                 RegistrationComponent.prototype.onSubmit = function () {
+                    console.log("Hola");
                     var _newId = this._idGeneratorService.newID(), _newUser = {
                         "id": _newId,
                         "name": this.newUser["name"],
                         "email": this.newUser["email"],
                         "password": this.newUser["password"]
-                    }, userAdded = this._userService.addUser(_newUser);
+                    }, userAdded = (_newUser.hasOwnProperty("name") && _newUser.name.length > 0) && this._userService.addUser(_newUser);
                     console.log(_newUser);
                     if (userAdded) {
                         this.newUser = {};

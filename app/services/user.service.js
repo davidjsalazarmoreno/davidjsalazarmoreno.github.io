@@ -29,7 +29,7 @@ System.register(["angular2/core", "../models/mock.user"], function(exports_1, co
                 }
                 UserService.prototype.getUsers = function () {
                     var _dbName = this._dbName, _db = this._db, _USERS = _db.getItem(_dbName);
-                    if (typeof _USERS !== null) {
+                    if (_USERS !== null) {
                         return Promise.resolve(JSON.parse(_USERS));
                     }
                     else {
@@ -48,8 +48,9 @@ System.register(["angular2/core", "../models/mock.user"], function(exports_1, co
                     }
                     return false;
                 };
-                UserService.prototype.updateUserById = function (updatedUser) {
-                    var _result, _users = this.users, _db = this._db, _dbName = this._dbName;
+                UserService.prototype.updateUserById = function (users, updatedUser) {
+                    var _result, _users = users, _db = this._db, _dbName = this._dbName;
+                    console.log(_users);
                     _users.map(function (elem, index) {
                         if (elem["id"] == updatedUser["id"]) {
                             _users[index] = updatedUser;

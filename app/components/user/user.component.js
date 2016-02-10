@@ -50,6 +50,7 @@ System.register(["angular2/core", "../../models/mock.todo", "../../services/user
                      */
                     this._userService.getCurrentUser(function (result) {
                         var _currentUserId = parseInt(_this._sessionService.getSession("currentUser"));
+                        console.log(result);
                         _this._userService.currentUser = _this._userService.getUserBy(result, "id", _currentUserId);
                         /**
                          * Agregando tareas de prueba en caso de no existir en el usuario actual
@@ -57,9 +58,6 @@ System.register(["angular2/core", "../../models/mock.todo", "../../services/user
                         if (!_this._userService.currentUser.hasOwnProperty("todos")) {
                             _this._userService.currentUser.todos = mock_todo_1.TODOS;
                         }
-                        console.log(result);
-                        console.log(_this._userService.currentUser);
-                        console.log(_currentUserId);
                         _this.user = _this._userService.currentUser;
                         _this.setTitle();
                     }, function (result) {
@@ -72,18 +70,18 @@ System.register(["angular2/core", "../../models/mock.todo", "../../services/user
                     this.title = "Hello " + name + ", please add a todo";
                 };
                 UserComponent.prototype.saveTodos = function () {
-                    var _currentUser = this._userService.currentUser, _updatedUsers = this._userService.updateUserById(_currentUser);
-                    // if( !!_updatedUsers ) {
-                    //   this.flash = "You task have been saved";
-                    //   console.log(this.flash);
-                    //   setTimeout(() => {
-                    //     this.flash = undefined;
-                    //   }, 1500);
-                    // }
-                    console.group("Save todos");
-                    console.log(_updatedUsers);
-                    console.log("emitter");
-                    console.groupEnd();
+                    var _this = this;
+                    var _currentUser = this._userService.currentUser, _users = this._userService.getUsers(), _updatedUsers;
+                    _users.then(function (result) {
+                        _updatedUsers = _this._userService.updateUserById(result, _currentUser);
+                        console.group("Save todos");
+                        console.log(_updatedUsers);
+                        console.log("emitter");
+                        console.groupEnd();
+                    }, function (result) {
+                        console.error("Error getting users");
+                        console.log(result);
+                    });
                 };
                 UserComponent = __decorate([
                     core_1.Component({
