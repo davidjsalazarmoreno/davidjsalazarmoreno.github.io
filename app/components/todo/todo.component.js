@@ -61,6 +61,16 @@ System.register(["angular2/core", "../../services/id-generator.service", "../../
                         console.log(this);
                     }
                 };
+                TodoComponent.prototype.removeTodo = function (todo) {
+                    var _this = this;
+                    this.todos.filter(function (elem, index) {
+                        if (elem["id"] == todo["id"]) {
+                            _this.todos.splice(index, 1);
+                            _this.saveTodos.emit();
+                            console.warn("Atención, será eliminado");
+                        }
+                    });
+                };
                 TodoComponent.prototype.toggleStatus = function (todo) {
                     if (todo.status == "active") {
                         todo.status = "completed";

@@ -11,7 +11,7 @@
         <input [checked]="t.status == 'completed'" type="checkbox" class="pull-left">
         {{t.content}}
 
-        <!-- <input (click)="removeTodo(t.id)" type="button" class="pull-right"> -->
+        <button class="btn btn-danger btn-xs pull-right glyphicon glyphicon-remove" (click)="removeTodo(t)"></button>
       </li>
 
     </div> <!-- /Todo List -->
