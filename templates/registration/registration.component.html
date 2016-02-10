@@ -5,6 +5,11 @@
     Congrats, user registered!, please <a [routerLink]="['Session']">login</a> for use the TODO app
   </div>
 
+  <span class="text-center text-default" [hidden]="submitted">
+    Already have an account?, please <b><a [routerLink]="['Session']">login</a></b>
+  </span>
+  <hr/>
+
   <form class="form form responsive" [hidden]="submitted" (ngSubmit)="onSubmit()" #registrationForm="ngForm">
 
     <div class="form-group">
@@ -38,9 +43,5 @@
   </form>
 
 
-  <small class="text-center text-default" [hidden]="submitted">
-    <hr/>
-    Your can login from a <a [routerLink]="['Session']">login</a> page
-  </small>
 
 </div>

@@ -1,5 +1,9 @@
 <div class="col-lg-4 col-lg-push-4">
   <h2>Login todo app</h2>
+  <p class="text-center text-default">
+    Your must create an account, please <b><a [routerLink]="['Registration']">register</a></b>
+  </p>
+  <hr/>
 
   <div class="alert alert-danger" *ngIf="error">
     Password does not match o username does not exist
@@ -24,9 +28,5 @@
     <input type="submit" value="Login" class="btn btn-primary btn-block" [disabled]="!sessionForm.form.valid">
   </form>
 
-  <hr/>
-  <small class="text-center text-default">
-    Your can create an account from a <a [routerLink]="['Registration']">Register</a> page
-  </small>
 
 </div>
