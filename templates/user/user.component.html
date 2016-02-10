@@ -1,0 +1,20 @@
+<h1 class="text-center">
+  {{title}}
+</h1>
+
+<hr>
+
+<p class="text-center text-default">
+ All your TODOS are save to your account on adding or editing,
+ <a [routerLink]="['Session', {logout: '1'}]">logout</a>
+</p>
+
+<div class="panel panel-success" *ngIf="flash">
+  <div class="panel-body">
+    {{flash}}
+  </div>
+</div>
+
+<div *ngIf="user">
+  <todo [todos]="user.todos" (saveTodos)="saveTodos()">loading todo component</todo>
+</div>
