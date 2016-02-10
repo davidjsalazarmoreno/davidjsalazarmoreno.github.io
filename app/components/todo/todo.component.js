@@ -103,6 +103,7 @@ System.register(["angular2/core", "../../services/id-generator.service", "../../
                     }
                     /**
                      * Emitiendo evento para guardar la lista de TODOS en la "base de datos"
+                     *
                      */
                     this.saveTodos.emit();
                 };
