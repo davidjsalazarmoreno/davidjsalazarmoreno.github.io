@@ -6,44 +6,38 @@
   <title>Todo app</title>
 
   <link rel="stylesheet" href="app.css">
-  <!-- http://todomvc.com/examples/vanillajs/ -->
+  <!-- Inspired on http://todomvc.com/examples/vanillajs/ -->
   <!-- 1. Load libraries -->
   <!-- IE required polyfills, in this exact order
   <!-- IE required polyfills (from CDN), in this exact order -->
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.33.3/es6-shim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.17/system-polyfills.js"></script>
 
+  <!-- See why system-register-only and not system.src http://stackoverflow.com/questions/33201005/how-to-compile-an-angular2-typescript-application-to-a-single-file -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.17/system-register-only.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.3/angular2-polyfills.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.17/system.src.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.3/Rx.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.3/angular2.dev.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-beta.3/router.dev.js"></script>
-
-  <script>
-    /**
-    * 2. Configure SystemJS
-    */
-    System.config({
-        packages: {
-          "app": {
-            format: "register",
-            defaultExtension: "js"
-          }
-        }
-      });
-
-      System.import("app/bootstrap")
-            .then(null, console.error.bind(console));
-
-  </script>
 </head>
 <body>
 
   <!-- 3. Display the application -->
   <app>Loading...</app>
 
+  <!-- Bundle: angular2-polyfills, Rx.js, angular2.dev.js, router.dev.js and App -->
+  <script src="app/bootstrap.js"></script>
+  <script>
+    /**
+    * 2. Configure SystemJS
+    */
+    System.import("bootstrap")
+          .then(function(status) {
+            console.log(arguments);
+            console.log(status);
+          }, function(status) {
+            console.warn(status);
+
+          });
+
+  </script>
 
 </body>
 </html>
